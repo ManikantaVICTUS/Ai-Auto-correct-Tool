@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI Autocorrect Studio</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace" aria-label="Autocorrect workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">AI-driven writing assistant</p>
+            <h1>Autocorrect Studio</h1>
+          </div>
+          <div class="status-pill" id="statusPill">Ready</div>
+        </header>
+
+        <div class="tool-grid">
+          <section class="editor-panel" aria-label="Text editor">
+            <div class="panel-header">
+              <div>
+                <h2>Text</h2>
+                <p>Type or paste a message to detect typing, grammar, and fluency issues.</p>
+              </div>
+              <button class="icon-button" id="sampleButton" type="button" title="Load sample text" aria-label="Load sample text">
+                <span aria-hidden="true">R</span>
+              </button>
+            </div>
+            <textarea id="sourceText" spellcheck="false" aria-label="Text to autocorrect">I recieve your mesage and I will reply tommorow. Their is alot of things we can improve in this tool.</textarea>
+            <div class="editor-actions">
+              <button id="analyzeButton" type="button">Analyze</button>
+              <button id="applyAllButton" class="secondary" type="button">Apply confident fixes</button>
+            </div>
+          </section>
+
+          <section class="result-panel" aria-label="Corrected output">
+            <div class="panel-header">
+              <div>
+                <h2>Corrected</h2>
+                <p>High-confidence edits can be applied automatically; uncertain edits stay as suggestions.</p>
+              </div>
+              <button class="icon-button" id="copyButton" type="button" title="Copy corrected text" aria-label="Copy corrected text">
+                <span aria-hidden="true">C</span>
+              </button>
+            </div>
+            <output id="correctedText" class="corrected-output" aria-live="polite"></output>
+            <div class="metrics" aria-label="Correction metrics">
+              <div>
+                <strong id="issueCount">0</strong>
+                <span>issues</span>
+              </div>
+              <div>
+                <strong id="autoCount">0</strong>
+                <span>auto-ready</span>
+              </div>
+              <div>
+                <strong id="fluencyScore">100</strong>
+                <span>fluency</span>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <section class="suggestions-panel" aria-label="Suggestions">
+          <div class="panel-header compact">
+            <div>
+              <h2>Suggestions</h2>
+              <p>Review each correction and teach the tool your preferred words.</p>
+            </div>
+            <form class="dictionary-form" id="dictionaryForm">
+              <input id="dictionaryInput" type="text" placeholder="Add personal word" aria-label="Add personal dictionary word">
+              <button class="secondary" type="submit">Add</button>
+            </form>
+          </div>
+          <div id="suggestionsList" class="suggestions-list"></div>
+        </section>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
